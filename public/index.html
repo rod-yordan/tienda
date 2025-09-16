@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header y sesión -->
+  <div class="container my-4 d-flex justify-content-between align-items-center">
+    <h1>Tienda</h1>
+    <div id="sessionContainer">
+      <button class="btn btn-primary" id="btnSesion" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar sesión</button>
+
+      <button class="btn btn-danger d-none" id="btnCerrarSesion">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <!-- Menú de categorías y productos -->
+  <div class="container my-4">
+    <div class="my-3" id="categoriasMenu"></div>
+    <div class="row" id="productosList"></div>
+  </div>
+
+  <!-- Modal de detalle de producto -->
+  <div class="modal fade" id="detalleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalle del producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="detalleModalBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Login -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formLogin">
+          <div class="modal-header">
+            <h5 class="modal-title">Iniciar Sesión</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="usuarioLogin" class="form-label">Usuario</label>
+              <input type="text" id="usuarioLogin" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="passwordLogin" class="form-label">Contraseña</label>
+              <input type="password" id="passwordLogin" class="form-control" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Ingresar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Notificación -->
+  <div class="modal fade" id="notificacionModal" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center" id="notificacionBody">
+          <!-- Mensaje dinámico -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
