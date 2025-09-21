@@ -1,4 +1,4 @@
-const API = "http://localhost:3000";
+const API = "https://tienda-production-e8c8.up.railway.app/";
 const token = localStorage.getItem("token");
 
 // --- Redirección si no hay sesión ---
