@@ -1,4 +1,4 @@
-const API = "https://tienda-production-e8c8.up.railway.app/";
+const API = "https://tienda-production-e8c8.up.railway.app";
 
 // --- Elementos ---
 const formLogin = document.getElementById("formLogin");
