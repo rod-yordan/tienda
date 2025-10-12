@@ -23,16 +23,12 @@ app.use('/productos', productosRoutes);
 app.use('/imagenes', imagenesRoutes);
 app.use('/api', authRoutes);
 
-// Ruta raíz (para Railway)
-app.get('/', (req, res) => {
-  res.send('✅ API de Tienda funcionando correctamente');
-});
-
 // Documentación Swagger
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Iniciar servidor
 app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en el puerto ${PORT}`);
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+  console.log(`Documentación Swagger disponible en http://localhost:${PORT}/docs`);
 });
 
