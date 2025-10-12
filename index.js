@@ -5,7 +5,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./openapi.json');
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Railway asigna automáticamente este puerto
+const PORT = 3000; // Railway asigna automáticamente este puerto
 
 // Middlewares
 app.use(cors());
@@ -34,6 +34,5 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en el puerto ${PORT}`);
-  console.log(`📘 Documentación Swagger disponible en /docs`);
 });
 
