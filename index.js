@@ -1,26 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const expressOasGenerator = require('express-oas-generator');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./openapi.json'); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-expressOasGenerator.init(app, {
-  swaggerUiServePath: '/docs', 
-  specOutputPath: './openapi.json', 
-  swaggerDocumentOptions: {
-    info: {
-      title: 'Tienda API',
-      version: '1.0.0',
-      description: 'Documentación generada automáticamente',
-    },
-    servers: [
-      { url: 'http://localhost:3000' },
-      { url: 'https://tienda-production-e8c8.up.railway.app' },
-    ],
-  },
-});
 
 // Middlewares
 app.use(cors());
@@ -37,6 +22,9 @@ app.use('/categorias', categoriasRoutes);
 app.use('/productos', productosRoutes);
 app.use('/imagenes', imagenesRoutes);
 app.use('/api', authRoutes); 
+
+// Documentación Swagger
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // Iniciar servidor
 app.listen(PORT, () => {
