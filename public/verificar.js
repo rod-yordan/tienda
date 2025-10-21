@@ -1,6 +1,6 @@
 async function verificarAcceso() {
   try {
-    const res = await fetch('https://api-tienda-online-production.up.railway.app/check-access');
+    const res = await fetch('https://tienda-production-e8c8.up.railway.app/check-access');
     if (!res.ok) {
       // Si el backend devuelve 403
       const data = await res.json();
