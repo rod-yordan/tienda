@@ -23,6 +23,7 @@
     <div class="row" id="productosList"></div>
   </div>
 
+
   <!-- Modal de detalle de producto -->
   <div class="modal fade" id="detalleModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -77,6 +78,23 @@
       </div>
     </div>
   </div>
+
+<script src="./verificar.js"></script>
+  <script>
+    (async () => {
+      const permitido = await verificarAcceso();
+      if (!permitido) return; // no carga nada más
+
+      // Si el acceso es válido, sigue con la app normal
+      const scriptApp = document.createElement('script');
+      scriptApp.src = './app.js';
+      document.body.appendChild(scriptApp);
+
+      const scriptAuth = document.createElement('script');
+      scriptAuth.src = './app.js';
+      document.body.appendChild(scriptAuth);
+    })();
+  </script>
 
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>

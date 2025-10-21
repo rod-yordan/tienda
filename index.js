@@ -12,6 +12,31 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+// Lista de IPs permitidas (las del instituto)
+const allowedIPs = [
+  '45.232.149.130',  
+  '45.232.149.146',  
+];
+
+app.get('/check-access', (req, res) => {
+  const clientIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const cleanIP = clientIP.replace('::ffff:', '');
+
+  console.log('Solicitud desde IP:', cleanIP);
+
+  if (!allowedIPs.includes(cleanIP)) {
+    return res.status(403).json({
+      authorized: false,
+      message: 'Acceso no autorizado desde esta red.'
+    });
+  }
+
+  return res.json({
+    authorized: true,
+    message: 'Acceso permitido.'
+  });
+});
+
 // Rutas
 const categoriasRoutes = require('./routes/categorias');
 const productosRoutes = require('./routes/productos');
